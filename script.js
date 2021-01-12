@@ -6,6 +6,7 @@ var o1 = document.getElementById("o1");
 var o2 = document.getElementById("o2");
 var o3 = document.getElementById("o3");
 var o4 = document.getElementById("o4");
+var answer = document.getElementById("answer");
 var resultDiv = document.getElementById("resultDiv");
 var result = document.getElementById("result");
 var index = 0;
@@ -50,11 +51,14 @@ questionDiv.addEventListener("click", function(event) {
     if (element.nodeName == "BUTTON"){
         if (elementId == myQuestions[index].correctAnswer){
             correctAnswers++;
+            answer.innerHTML = "Correct!";
         } else {
             wrongAnswers++;
+            answer.innerHTML = "Wrong!";
             // Subtract 10 seconds for every wrong answer.
             timerCount = timerCount - 10;
         }
+        setTimeout(function(){ answer.innerHTML = ""; }, 1000);
         index++;
         if (index < myQuestions.length){
             displayQuestion();
@@ -78,6 +82,7 @@ questionDiv.addEventListener("click", function(event) {
         o4: "Brendan Eich"
       },
       correctAnswer: "o3"
+       
     },
     {
       question: "Which one of these is a JavaScript package manager?",
@@ -99,4 +104,7 @@ questionDiv.addEventListener("click", function(event) {
     },
     correctAnswer: "o4"
   }
+  
+
+  
 ];
