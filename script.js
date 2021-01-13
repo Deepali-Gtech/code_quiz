@@ -15,12 +15,13 @@ var wrongAnswers = 0;
 var timerCount = 60;
 var counter;
 
-startQuizButton.addEventListener('click', buildQuiz);
+startQuizButton.addEventListener("click", buildQuiz);
 
 function buildQuiz(){
-    startQuizDiv.style.visibility = 'hidden' ;
+    startQuizDiv.style.visibility = "hidden" ;
     questionDiv.style.visibility = 'visible' ;
     timerDiv.innerHTML = timerCount;
+    console.log("timer at this point-> " + timerCount);
     counter = setInterval(timer, 1000);
     displayQuestion();
 }
@@ -66,13 +67,15 @@ questionDiv.addEventListener("click", function(event) {
             finalScore = timerCount;
             questionDiv.style.visibility = 'hidden' ;
             resultDiv.style.visibility = 'visible' ;
-            result.innerHTML = "Final score is " + finalScore;
+            result.innerHTML = "<b>All done!</b> <br>" + " Your final score is " + finalScore;
+            
         }
     } 
+    
   });
 
 
-  const myQuestions = [
+   var myQuestions = [
     {
       question: "Who invented JavaScript?",
       answers: {
