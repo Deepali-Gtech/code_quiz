@@ -14,3 +14,10 @@ Below are the screen shorts for the website
 ![Website](./asset/question_screen.png)
 ### Score Screen :
 ![Website](./asset/score_screen.png)
+
+# Deployment Steps
+1. In html file
+Created div by using bootstrap css styling and declared id in html file.
+2. In js file
+Declared veriable in js file, build the function by assigning key and value to the function.
+3. For questions created array and build function by passes these array
