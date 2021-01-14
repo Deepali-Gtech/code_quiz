@@ -27,7 +27,7 @@ function buildQuiz() {
   wrongAnswers = 0;
   timerCount = 60;
   startQuizDiv.style.visibility = "hidden";
-  questionDiv.style.visibility = 'visible';
+  questionDiv.style.display = 'block';
   timerDiv.innerHTML = "Time:" + timerCount;
   console.log("timer at this point-> ", + timerCount);
   counter = setInterval(timer, 1000);
@@ -72,8 +72,8 @@ questionDiv.addEventListener("click", function (event) {
       displayQuestion();
     } else {
       finalScore = timerCount;
-      questionDiv.style.visibility = 'hidden';
-      resultDiv.style.visibility = 'visible';
+      questionDiv.style.display = 'none';
+      resultDiv.style.display = 'block';
       result.innerHTML = "<b>All done!</b> <br>" + " Your final score is " + finalScore;
     }
   }
@@ -82,8 +82,8 @@ questionDiv.addEventListener("click", function (event) {
 submitScore.addEventListener("click", submitScoreWithInitials);
 
 function submitScoreWithInitials() {
-  resultDiv.style.visibility = "hidden";
-  scoreDiv.style.visibility = 'visible';
+  resultDiv.style.display = "none";
+  scoreDiv.style.display = 'block';
   highscores[initials.value] = finalScore;
   initials.value = "";
   input.innerHTML = "";
@@ -97,7 +97,7 @@ function submitScoreWithInitials() {
 goBack.addEventListener("click", goBackToStart);
 
 function goBackToStart() {
-  scoreDiv.style.visibility = 'hidden';
+  scoreDiv.style.display = 'none';
   startQuizDiv.style.visibility = "visible";
 }
 
