@@ -1,3 +1,4 @@
+//declare global variable
 var startQuizDiv = document.getElementById("startQuizDiv");
 var questionDiv = document.getElementById("questionDiv");
 var timerDiv = document.getElementById("timer");
@@ -20,8 +21,10 @@ timerDiv.innerHTML = "Time:" + timerCount;
 var counter;
 var highscores = {};
 
+//Added event listener on id declared in html and called function by using click argument
 startQuizButton.addEventListener("click", buildQuiz);
 
+// created function to display the question screen with running timer
 function buildQuiz() {
   startQuizDiv.style.display = "none";
   questionDiv.style.display = 'block';
@@ -29,8 +32,6 @@ function buildQuiz() {
   counter = setInterval(timer, 1000);
   displayQuestion();
 }
-
-//1000 will  run it every 1 second
 
 function timer() {
   if (timerCount <= 0) {
@@ -41,6 +42,7 @@ function timer() {
   }
 }
 
+//Created function to display question
 function displayQuestion() {
   ques.innerHTML = myQuestions[index].question;
   o1.innerHTML = myQuestions[index].answers.o1;
@@ -96,6 +98,7 @@ function submitScoreWithInitials() {
   }  
 }
 
+//go back button will take you to main screen again 
 goBack.addEventListener("click", goBackToStart);
 
 function goBackToStart() {
@@ -108,14 +111,14 @@ function goBackToStart() {
   timerCount = 60;
   timerDiv.innerHTML = "Time:" + timerCount;
 }
-
+// to clear on last screen by clicking button 
 clearScore.addEventListener("click", clearScoreEvent);
 
 function clearScoreEvent() {
   input.innerHTML = "";
   highscores = {};
 }
-
+// question list along with answers set by passing key value in array
 var myQuestions = [
   {
     question: "Who invented JavaScript?",
