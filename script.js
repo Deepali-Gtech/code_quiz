@@ -34,7 +34,7 @@ function buildQuiz() {
 
 function timer() {
   if (timerCount <= 0) {
-    clearInterval(counter);
+    clearTimer();
   } else {
     timerCount--;
     timerDiv.innerHTML = "Time:" + timerCount;
@@ -67,17 +67,21 @@ questionDiv.addEventListener("click", function (event) {
     if (index < myQuestions.length) {
       displayQuestion();
     } else {
-      clearInterval(counter);
-      timerDiv.innerHTML = "";
-      finalScore = timerCount;
-      questionDiv.style.display = 'none';
-      resultDiv.style.display = 'block';
-      result.innerHTML = "<b>All done!</b> <br>" + " Your final score is " + finalScore;
+      clearTimer();
     }
   }
 });
 
 submitScore.addEventListener("click", submitScoreWithInitials);
+
+function clearTimer() {
+  clearInterval(counter);
+  timerDiv.innerHTML = "";
+  finalScore = timerCount;
+  questionDiv.style.display = 'none';
+  resultDiv.style.display = 'block';
+  result.innerHTML = "<b>All done!</b> <br>" + " Your final score is " + finalScore;
+}
 
 function submitScoreWithInitials() {
   resultDiv.style.display = "none";
