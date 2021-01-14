@@ -17,6 +17,7 @@ var correctAnswers;
 var wrongAnswers;
 var timerCount;
 var counter;
+var highscores = {};
 
 startQuizButton.addEventListener("click", buildQuiz);
 
@@ -65,7 +66,7 @@ questionDiv.addEventListener("click", function (event) {
       // Subtract 10 seconds for every wrong answer.
       timerCount = timerCount - 10;
     }
-    setTimeout(function () { answer.innerHTML = ""; }, 1000);
+    setTimeout(function () { answer.innerHTML = ""; }, 500);
     index++;
     if (index < myQuestions.length) {
       displayQuestion();
@@ -75,7 +76,6 @@ questionDiv.addEventListener("click", function (event) {
       resultDiv.style.visibility = 'visible';
       result.innerHTML = "<b>All done!</b> <br>" + " Your final score is " + finalScore;
     }
-
   }
 });
 
@@ -84,8 +84,14 @@ submitScore.addEventListener("click", submitScoreWithInitials);
 function submitScoreWithInitials() {
   resultDiv.style.visibility = "hidden";
   scoreDiv.style.visibility = 'visible';
-  input.innerHTML = "1." + initials.value + "-" + finalScore;
+  highscores[initials.value] = finalScore;
   initials.value = "";
+  input.innerHTML = "";
+  var count = 1;
+  for (var key in highscores) {
+    input.innerHTML = input.innerHTML  + count + ". " + key + " - " + highscores[key] + "<br>";
+    count++;
+  }  
 }
 
 goBack.addEventListener("click", goBackToStart);
@@ -95,6 +101,12 @@ function goBackToStart() {
   startQuizDiv.style.visibility = "visible";
 }
 
+clearScore.addEventListener("click", clearScoreEvent);
+
+function clearScoreEvent() {
+  input.innerHTML = "";
+  highscores = {};
+}
 
 var myQuestions = [
   {
@@ -128,7 +140,4 @@ var myQuestions = [
     },
     correctAnswer: "o4"
   }
-
-
-
 ];
