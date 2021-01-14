@@ -5,7 +5,7 @@ Build a timed coding quiz with multiple-choice questions. This app will run in t
 Link to the deployed website: https://deepali-gtech.github.io/code_quiz/
 
 
-Below is the screen short for the website
+Below are the screen shorts for the website
 
 ### Opening Screen :
 ![Website](./asset/opening_screen.png)
