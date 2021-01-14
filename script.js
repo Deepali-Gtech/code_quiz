@@ -12,24 +12,20 @@ var result = document.getElementById("result");
 var initials = document.getElementById("initials");
 var scoreDiv = document.getElementById("scoreDiv");
 var input = document.getElementById("input");
-var index;
-var correctAnswers;
-var wrongAnswers;
-var timerCount;
+var index = 0;
+var correctAnswers = 0;
+var wrongAnswers = 0;
+var timerCount = 60;
+timerDiv.innerHTML = "Time:" + timerCount;
 var counter;
 var highscores = {};
 
 startQuizButton.addEventListener("click", buildQuiz);
 
 function buildQuiz() {
-  index = 0;
-  correctAnswers = 0;
-  wrongAnswers = 0;
-  timerCount = 60;
-  startQuizDiv.style.visibility = "hidden";
+  startQuizDiv.style.display = "none";
   questionDiv.style.display = 'block';
   timerDiv.innerHTML = "Time:" + timerCount;
-  console.log("timer at this point-> ", + timerCount);
   counter = setInterval(timer, 1000);
   displayQuestion();
 }
@@ -71,6 +67,8 @@ questionDiv.addEventListener("click", function (event) {
     if (index < myQuestions.length) {
       displayQuestion();
     } else {
+      clearInterval(counter);
+      timerDiv.innerHTML = "";
       finalScore = timerCount;
       questionDiv.style.display = 'none';
       resultDiv.style.display = 'block';
@@ -98,7 +96,13 @@ goBack.addEventListener("click", goBackToStart);
 
 function goBackToStart() {
   scoreDiv.style.display = 'none';
-  startQuizDiv.style.visibility = "visible";
+  startQuizDiv.style.display = "block";
+  // reset variables for quiz restart
+  index = 0;
+  correctAnswers = 0;
+  wrongAnswers = 0;
+  timerCount = 60;
+  timerDiv.innerHTML = "Time:" + timerCount;
 }
 
 clearScore.addEventListener("click", clearScoreEvent);

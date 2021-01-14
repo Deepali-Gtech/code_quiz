@@ -17,6 +17,10 @@
 </head>
 
 <body>
+    <div class="row" id="header">
+        <span id="empty" class="light col-sm-10"></span>
+        <span id="timer" class="light col-sm-2"></span>
+    </div>
     <div id="startQuizDiv">
         <h1>Coding Quiz Challenge</h1>
         <p class="fw-bolder">To answer the question select one option from the list. It will display the result by
@@ -24,23 +28,23 @@
         <button type="button" id="startQuizButton" class="btn btn-success">Start Quiz</button>
     </div>
 
-    <div id="questionDiv" class="btn-group-vertical gap-2" style="display:none;">
-        <div id="timer" class="light" style="position:absolute;top:0px;right:0px;"></div>
-        <h2 id="timer"></h2>
-        <h1 id="ques"></h1>
-        <button id="o1" type="button" class="btn btn-success"></button>
-        <button id="o2" type="button" class="btn btn-success"></button>
-        <button id="o3" type="button" class="btn btn-success"></button>
-        <button id="o4" type="button" class="btn btn-success"></button>
+    <div id="questionDiv" style="display:none;">
+        <h4 id="ques"></h4>
+        <div class="btn-group-vertical gap-2">
+            <button id="o1" type="button" class="btn btn-success"></button>
+            <button id="o2" type="button" class="btn btn-success"></button>
+            <button id="o3" type="button" class="btn btn-success"></button>
+            <button id="o4" type="button" class="btn btn-success"></button>
+        </div>
     </div>
-    
+
     <div id="resultDiv" style="display:none;">
         <h1 id="result"></h1>
         <label for="initials">Enter your initials:</label>
         <input type="text" id="initials">
         <button type="button" id="submitScore" class="btn btn-success">Submit</button>
     </div>
-    
+
     <div id="scoreDiv" style="display:none; ">
         <h1>Highscores</h1>
         <span id="input"></span>
